@@ -25,10 +25,10 @@ jobs:
           python -m pip install --upgrade pip
 
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@v5.0.0
         with:
-          projectBaseDir: .
+          args: >
+            -Dsonar.projectKey=dardanbici_sonarsourcetest
+            -Dsonar.organization=dardanbici
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_PROJECT_KEY: your_project_key
-          SONAR_ORGANIZATION: your_organization_key
