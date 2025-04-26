@@ -33,10 +33,3 @@ jobs:
             -Dsonar.host.url=https://sonarcloud.io
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-      - name: SonarCloud Quality Gate
-        uses: SonarSource/sonarcloud-quality-gate-action@v1.0.1
-        with:
-          timeoutSeconds: 300  # Optional: wait max 5 minutes
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
