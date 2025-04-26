@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Important! Full clone for SCM info
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -37,8 +37,10 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-      - name: SonarCloud Quality Gate Check
-        uses: SonarSource/sonarcloud-quality-gate-action@v1.1.0
-        timeout-minutes: 5
+      - name: SonarCloud Quality Gate
+        uses: SonarSource/sonarcloud-github-action@v2.0.2
+        with:
+          projectKey: dardanbici_SonarSourceTest
+          organization: dardanbici
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
