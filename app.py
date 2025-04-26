@@ -27,3 +27,9 @@ def unsafe_function():
 
 if __name__ == "__main__":
     unsafe_function()
+
+import subprocess
+
+def dangerous_code():
+    user_input = input("Command: ")
+    subprocess.call(user_input, shell=True)  # 💥 Command Injection Risk
