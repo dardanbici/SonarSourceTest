@@ -18,3 +18,12 @@ if __name__ == "__main__":
     print(f"Subtract: 5 - 2 = {subtract(5, 2)}")
     print(f"Multiply: 3 * 4 = {multiply(3, 4)}")
     print(f"Divide: 10 / 2 = {divide(10, 2)}")
+
+# app.py
+
+def unsafe_function():
+    user_input = input("Enter something: ")
+    eval(user_input)  # Danger: This allows arbitrary code execution!
+
+if __name__ == "__main__":
+    unsafe_function()
