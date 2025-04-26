@@ -13,10 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -38,9 +35,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: SonarCloud Quality Gate
-        uses: SonarSource/sonarcloud-github-action@v2.0.2
+        uses: SonarSource/sonarcloud-quality-gate-action@v1.1.0
         with:
-          projectKey: dardanbici_SonarSourceTest
-          organization: dardanbici
+          timeoutSeconds: 300  # Optional: wait max 5 minutes
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
