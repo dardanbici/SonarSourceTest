@@ -13,7 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Important! Full clone for SCM info
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -34,7 +37,8 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-      - name: Check SonarCloud Quality Gate  # <<=== Add THIS step
+      - name: SonarCloud Quality Gate Check
         uses: SonarSource/sonarcloud-quality-gate-action@v1.1.0
+        timeout-minutes: 5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
